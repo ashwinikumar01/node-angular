@@ -3,6 +3,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
+const userRoutes = require("./routes/user");
+
 const app = express();
 
 const connectUrl =
@@ -39,5 +41,7 @@ app.use((req, res, next) => {
   );
   next();
 });
+
+app.use("/api/user", userRoutes);
 
 module.exports = app;
