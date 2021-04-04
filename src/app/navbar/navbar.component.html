@@ -19,8 +19,8 @@
         Login
       </a>
     </li>
-    <li *ngIf="userIsAuthenticated">
-      <a mat-raised-button color="danger" class="mat-button3" (click)="onLogout()">
+    <li *ngIf="userIsAuthenticated" (click)="onLogout()">
+      <a mat-raised-button color="danger" class="mat-button3">
         LogOut
       </a>
     </li>
