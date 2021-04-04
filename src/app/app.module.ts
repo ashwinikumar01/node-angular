@@ -21,6 +21,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { ErrorComponent } from './error/error.component';
 import { ErrorInterceptor } from './error-interceptor';
+import { AuctionsListComponent } from './auctions-list/auctions-list.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ErrorInterceptor } from './error-interceptor';
     LoginComponent,
     SignupComponent,
     ErrorComponent,
+    AuctionsListComponent,
   ],
   imports: [
     BrowserModule,

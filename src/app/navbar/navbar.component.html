@@ -4,7 +4,7 @@
   </span>
   <span class="spacer"></span>
   <ul>
-    <li class="margin">
+    <li class="margin" *ngIf="!userIsAuthenticated">
       <a
         mat-raised-button
         color="accent"
@@ -14,15 +14,15 @@
         SignUp
       </a>
     </li>
-    <li class="margin">
+    <li class="margin" *ngIf="!userIsAuthenticated">
       <a mat-raised-button color="warn" routerLink="/login" class="mat-button2">
         Login
       </a>
     </li>
-    <!-- <li>
-      <a mat-raised-button color="danger">
+    <li *ngIf="userIsAuthenticated">
+      <a mat-raised-button color="danger" class="mat-button3" (click)="onLogout()">
         LogOut
       </a>
-    </li> -->
+    </li>
   </ul>
 </mat-toolbar>
