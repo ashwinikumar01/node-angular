@@ -1,1 +1,65 @@
-<p>signup works!</p>
+<div class="center">
+  <mat-card>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <form
+      (submit)="onSignup(signupForm)"
+      #signupForm="ngForm"
+      *ngIf="!isLoading"
+    >
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your email</mat-label>
+        <input
+          matInput
+          name="email"
+          ngModel
+          type="email"
+          placeholder="E-Mail"
+          #emailInput="ngModel"
+          required
+          email
+        />
+        <mat-icon mat-icon-button matSuffix>email</mat-icon>
+        <mat-error *ngIf="emailInput.invalid">
+          Please enter a valid email.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your password</mat-label>
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          placeholder="Enter tour password"
+          required
+          name="password"
+          ngModel
+          #passwordInput="ngModel"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="passwordInput.invalid">
+          Please enter a valid password.
+        </mat-error>
+      </mat-form-field>
+
+      <!--
+      <mat-form-field appearance="fill">
+        <mat-label>Select</mat-label>
+        <mat-select>
+          <mat-option value="two">One</mat-option>
+          <mat-option value="one">Two</mat-option>
+        </mat-select>
+      </mat-form-field> -->
+      <button mat-raised-button color="accent" type="submit">
+        Signup
+      </button>
+    </form>
+  </mat-card>
+</div>
