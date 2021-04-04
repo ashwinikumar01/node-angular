@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AuthModel } from './auth_model';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
 
   createUser(email: string, password: string, userDetails: string) {
-    const authData = {
+    const authData: AuthModel = {
       email: email,
       password: password,
       userDetails: userDetails,
