@@ -8,7 +8,9 @@ const userRoutes = require("./routes/user");
 const app = express();
 
 const connectUrl =
-  "mongodb+srv://ashwini:vaYychXXWjoM1yV8@api-client.vyavf.mongodb.net/api-client";
+  "mongodb+srv://ashwini:" +
+  process.env.MONGO_ATLAS_PW +
+  "@api-client.vyavf.mongodb.net/api-client";
 
 const connectConfig = {
   useNewUrlParser: true,

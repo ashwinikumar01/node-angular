@@ -9,7 +9,7 @@ exports.createUser = (req, res, next) => {
     const user = new User({
       email: req.body.email,
       password: hash,
-      userDetails: req.body.userDetails,  // req.body.{"we can enter anything and by this we will access"}
+      userDetails: req.body.userDetails, // req.body.{"we can enter anything and by this we will access"}
     });
     user
       .save()
@@ -50,7 +50,7 @@ exports.userLogin = (req, res, next) => {
           email: fetchedUser.email,
           userId: fetchedUser._id,
         },
-        "secret_key",
+        process.env.JWT_KEY,
         {
           expiresIn: "1h",
         }
