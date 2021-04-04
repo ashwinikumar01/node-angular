@@ -24,3 +24,7 @@ mat-spinner {
 .margin-change {
   margin-top: 10px;
 }
+
+.card-color {
+  background-color: rgb(78, 74, 74);
+}
