@@ -21,7 +21,11 @@ export class SignupComponent implements OnInit {
       return;
     } else {
       this.isLoading = true;
-      this.authService.createUser(form.value.email, form.value.password);
+      this.authService.createUser(
+        form.value.email,
+        form.value.password,
+        form.value.details,
+      );
     }
   }
 }

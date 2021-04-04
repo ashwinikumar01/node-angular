@@ -8,10 +8,11 @@ import { Router } from '@angular/router';
 export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
 
-  createUser(email: string, password: string) {
+  createUser(email: string, password: string, userDetails: string) {
     const authData = {
       email: email,
       password: password,
+      userDetails: userDetails,
     };
     this.http
       .post('http://localhost:3000/api/user/signup', authData)

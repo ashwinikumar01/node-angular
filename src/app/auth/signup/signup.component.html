@@ -13,7 +13,7 @@
           name="email"
           ngModel
           type="email"
-          placeholder="E-Mail"
+          placeholder="Enter your email"
           #emailInput="ngModel"
           required
           email
@@ -29,7 +29,7 @@
         <input
           matInput
           [type]="hide ? 'password' : 'text'"
-          placeholder="Enter tour password"
+          placeholder="Enter your password"
           required
           name="password"
           ngModel
@@ -49,14 +49,23 @@
         </mat-error>
       </mat-form-field>
 
-      <!--
       <mat-form-field appearance="fill">
-        <mat-label>Select</mat-label>
-        <mat-select>
-          <mat-option value="two">One</mat-option>
-          <mat-option value="one">Two</mat-option>
-        </mat-select>
-      </mat-form-field> -->
+        <mat-label>Provide some regarding you</mat-label>
+        <input
+          matInput
+          name="details"
+          ngModel
+          type="text"
+          placeholder="Provide some regarding you"
+          #detailsInput="ngModel"
+          required
+        />
+        <mat-icon mat-icon-button matSuffix>edit</mat-icon>
+        <mat-error *ngIf="detailsInput.invalid">
+          Please enter some details.
+        </mat-error>
+      </mat-form-field>
+
       <button mat-raised-button color="accent" type="submit">
         Signup
       </button>
