@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { AuthModel } from './auth_model';
 import { Subject } from 'rxjs';
+import { AuthModel } from './auth_model';
 
 @Injectable({
   providedIn: 'root',
@@ -31,5 +31,9 @@ export class AuthService {
         this.authStatusListener.next(false);
       }
     );
+  }
+
+  userSignup() {
+
   }
 }

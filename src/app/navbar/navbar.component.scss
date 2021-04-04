@@ -18,6 +18,17 @@ ul {
 }
 
 .margin {
-  margin-right: 10px;
+    margin-right: 10px;
 }
 
+.mat-button1:hover {
+    background-color: #0ef184;
+    color: white;
+    animation-timing-function: 1s;
+}
+
+.mat-button2:hover {
+    background-color: #ff6e5e;
+    color: white;
+    animation-timing-function: 1s;
+}
