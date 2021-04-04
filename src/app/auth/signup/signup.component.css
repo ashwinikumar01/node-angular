@@ -20,3 +20,7 @@ mat-spinner {
   stroke: #4fc54f;
   margin: auto;
 }
+
+.margin-change {
+  margin-top: 10px;
+}
