@@ -2,7 +2,8 @@ mat-toolbar {
     background-color: #9C27B0;
     .heading:hover {
         cursor: pointer;
-        color: rgb(238, 185, 185);
+        color: rgb(248, 225, 225);
+        animation-duration: 5s;
     }
 }
 
@@ -24,11 +25,11 @@ ul {
 .mat-button1:hover {
     background-color: #0ef184;
     color: white;
-    animation-timing-function: 1s;
+    animation-duration: 1s;
 }
 
 .mat-button2:hover {
     background-color: #ff6e5e;
     color: white;
-    animation-timing-function: 1s;
+    animation-duration: 1s;
 }

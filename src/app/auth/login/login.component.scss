@@ -1,0 +1,32 @@
+mat-form-field {
+  width: 100%;
+}
+
+mat-label {
+  color: white;
+}
+
+mat-card {
+  width: 100%;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+  margin-top: 10px;
+}
+
+mat-spinner {
+  stroke: #4fc54f;
+  margin: auto;
+}
+
+.margin-change {
+  margin-top: 10px;
+}
+
+.card-color {
+  background-color: rgb(78, 74, 74);
+}
+

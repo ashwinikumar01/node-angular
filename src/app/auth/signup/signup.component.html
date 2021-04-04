@@ -1,5 +1,8 @@
 <div class="center">
   <mat-card class="card-color">
+    <mat-card-header>
+      <mat-card-title>SignUp</mat-card-title>
+    </mat-card-header>
     <mat-spinner *ngIf="isLoading"></mat-spinner>
     <form
       (submit)="onSignup(signupForm)"
