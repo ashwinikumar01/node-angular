@@ -1,15 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
-  selector: 'app-auctions-list',
+  selector: 'auctions-list',
   templateUrl: './auctions-list.component.html',
-  styleUrls: ['./auctions-list.component.sass']
+  styleUrls: ['./auctions-list.component.sass'],
 })
-export class AuctionsListComponent implements OnInit {
+export class AuctionsListComponent implements OnInit, OnDestroy {
+  userIsAuthenticated = false;
+  userId: string;
+  private authStatusSubs: Subscription;
 
-  constructor() { }
+  constructor(private authService: AuthService) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.userId = this.authService.getUserId();
+    this.userIsAuthenticated = this.authService.getIsAuth();
+    this.authStatusSubs = this.authService
+      .getAuthStatusListener()
+      .subscribe((isAuthenticated) => {
+        this.userIsAuthenticated = isAuthenticated;
+        this.userId = this.authService.getUserId();
+      });
   }
 
+  ngOnDestroy() {
+    this.authStatusSubs.unsubscribe();
+  }
 }
