@@ -4,9 +4,15 @@ mat-toolbar {
 
 .heading:hover {
   cursor: pointer;
+  transition: transform 250ms, opacity 400ms;
+  text-decoration: none;
   color: rgb(248, 225, 225);
-  -webkit-animation-duration: 5s;
-  animation-duration: 5s;
+}
+
+.heading {
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
 }
 
 ul {

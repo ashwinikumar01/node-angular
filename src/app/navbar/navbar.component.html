@@ -1,7 +1,10 @@
 <mat-toolbar>
-  <span class="heading">
+  <a class="heading" *ngIf="!userIsAuthenticated" routerLink="/login">
     Online Auction
-  </span>
+  </a>
+  <a class="heading" *ngIf="userIsAuthenticated" routerLink="/auctions-list">
+    Online Auction
+  </a>
   <span class="spacer"></span>
   <ul>
     <li class="margin" *ngIf="!userIsAuthenticated">
