@@ -5,6 +5,7 @@ mat-toolbar {
 .heading:hover {
   cursor: pointer;
   color: rgb(248, 225, 225);
+  -webkit-animation-duration: 5s;
   animation-duration: 5s;
 }
 
@@ -15,6 +16,8 @@ ul {
 }
 
 ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -23,6 +26,8 @@ a {
 }
 
 .spacer {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
   flex: 1 1 auto;
 }
 
@@ -33,17 +38,20 @@ a {
 .mat-button1:hover {
   background-color: #06d471;
   color: white;
+  -webkit-animation-duration: 1s;
   animation-duration: 1s;
 }
 
 .mat-button2:hover {
   background-color: #ff6e5e;
   color: white;
+  -webkit-animation-duration: 1s;
   animation-duration: 1s;
 }
 
 .mat-button3:hover {
   background-color: #e90a0a;
   color: white;
+  -webkit-animation-duration: 1s;
   animation-duration: 1s;
 }

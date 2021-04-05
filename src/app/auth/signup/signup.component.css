@@ -11,7 +11,11 @@ mat-card {
 }
 
 .center {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   padding: 30px;
   margin-top: 10px;
@@ -33,5 +37,6 @@ mat-spinner {
 .mat-button1:hover {
   background-color: #06d471;
   color: white;
+  -webkit-animation-duration: 1s;
   animation-duration: 1s;
 }

@@ -1,37 +1,42 @@
 mat-form-field {
-  width: 100%;
+    width: 100%;
 }
 
 mat-label {
-  color: white;
+    color: white;
 }
 
 mat-card {
-  width: 100%;
+    width: 100%;
 }
 
 .center {
-  display: flex;
-  justify-content: center;
-  padding: 30px;
-  margin-top: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding: 30px;
+    margin-top: 10px;
 }
 
 mat-spinner {
-  stroke: #4fc54f;
-  margin: auto;
+    stroke: #4fc54f;
+    margin: auto;
 }
 
 .margin-change {
-  margin-top: 10px;
+    margin-top: 10px;
 }
 
 .card-color {
-  background-color: rgb(78, 74, 74);
+    background-color: rgb(78, 74, 74);
 }
 
 .mat-button1:hover {
-  background-color: #06d471;
-  color: white;
-  animation-duration: 1s;
+    background-color: #06d471;
+    color: white;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
 }
