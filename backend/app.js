@@ -44,6 +44,11 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use("/", express.static(path.join(__dirname, "../dist/api-creation")));
+
 app.use("/api/user", userRoutes);
+app.use((req, res, next) => {
+  res.sendFile(path.join(__dirname, "../dist/api-creation/index.html"));
+});
 
 module.exports = app;
