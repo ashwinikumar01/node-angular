@@ -32,11 +32,11 @@ export class AuthService {
     return this.authStatusListener.asObservable();
   }
 
-  createUser(email: string, password: string, userDetails: string) {
+  createUser(email: string, password: string, userName: string) {
     const authData: AuthModel = {
       email: email,
       password: password,
-      userDetails: userDetails,
+      userName: userName,
     };
     this.http.post('http://localhost:3000/api/user/signup', authData).subscribe(
       (response) => {

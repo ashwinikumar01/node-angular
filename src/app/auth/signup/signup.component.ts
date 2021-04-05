@@ -32,7 +32,7 @@ export class SignupComponent implements OnInit, OnDestroy {
       this.authService.createUser(
         form.value.email,
         form.value.password,
-        form.value.details
+        form.value.userName
       );
     }
   }

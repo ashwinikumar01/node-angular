@@ -9,7 +9,7 @@ exports.createUser = (req, res, next) => {
     const user = new User({
       email: req.body.email,
       password: hash,
-      userDetails: req.body.userDetails, // req.body.{"we can enter anything and by this we will access"}
+      userName: req.body.userName, // req.body.{"we can enter anything and by this we will access"}
     });
     user
       .save()
