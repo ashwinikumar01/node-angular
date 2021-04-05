@@ -1,7 +1,10 @@
 <div class="center">
   <mat-card class="card-color">
     <mat-card-header>
-      <mat-card-title>SignUp</mat-card-title>
+      <mat-card-title *ngIf="!isLoading">SignUp</mat-card-title>
+      <mat-card-title *ngIf="isLoading">
+        Signing up, please wait...
+      </mat-card-title>
     </mat-card-header>
     <mat-spinner *ngIf="isLoading"></mat-spinner>
     <form
@@ -9,23 +12,22 @@
       #signupForm="ngForm"
       *ngIf="!isLoading"
     >
-
-    <mat-form-field appearance="fill">
-      <mat-label>Full Name</mat-label>
-      <input
-        matInput
-        name="userName"
-        ngModel
-        type="text"
-        placeholder="Enter your name"
-        #detailsInput="ngModel"
-        required
-      />
-      <mat-icon mat-icon-button matSuffix>person_pin</mat-icon>
-      <mat-error *ngIf="detailsInput.invalid">
-        Please enter your name.
-      </mat-error>
-    </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Full Name</mat-label>
+        <input
+          matInput
+          name="userName"
+          ngModel
+          type="text"
+          placeholder="Enter your name"
+          #detailsInput="ngModel"
+          required
+        />
+        <mat-icon mat-icon-button matSuffix>person_pin</mat-icon>
+        <mat-error *ngIf="detailsInput.invalid">
+          Please enter your name.
+        </mat-error>
+      </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Enter your email</mat-label>
@@ -56,15 +58,9 @@
           ngModel
           #passwordInput="ngModel"
         />
-        <button
-          mat-icon-button
-          matSuffix
-          (click)="hide = !hide"
-          [attr.aria-label]="'Hide password'"
-          [attr.aria-pressed]="hide"
-        >
-          <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
-        </button>
+        <mat-icon matSuffix (click)="hide = !hide" class="mat-hide">
+          {{ hide ? 'visibility_off' : 'visibility' }}
+        </mat-icon>
         <mat-error *ngIf="passwordInput.invalid">
           Please enter a valid password.
         </mat-error>
