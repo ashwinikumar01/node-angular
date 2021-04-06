@@ -1,10 +1,9 @@
 const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
 
 const userRoutes = require("./routes/user");
-const auctionRoutes = require("./routes/auction");
+const auctionRoutes = require("./routes/auctions");
 
 const app = express();
 
@@ -48,7 +47,8 @@ app.use((req, res, next) => {
 app.use("/", express.static(path.join(__dirname, "../dist/api-creation")));
 
 app.use("/api/user", userRoutes);
-app.use("/api/auction", auctionRoutes);
+app.use("/api/auctions", auctionRoutes);
+app.use("/images", express.static(path.join("backend/images")));
 
 app.use((req, res, next) => {
   res.sendFile(path.join(__dirname, "../dist/api-creation/index.html"));

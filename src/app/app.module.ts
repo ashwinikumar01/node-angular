@@ -23,6 +23,7 @@ import { ErrorComponent } from './error/error.component';
 import { ErrorInterceptor } from './error-interceptor';
 import { AuctionsListComponent } from './auctions-list/auctions-list.component';
 import { CreateNewItemComponent } from './auctions-list/create-new-item/create-new-item.component';
+import { NewItemsListComponent } from './auctions-list/new-items-list/new-items-list.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { CreateNewItemComponent } from './auctions-list/create-new-item/create-n
     ErrorComponent,
     AuctionsListComponent,
     CreateNewItemComponent,
+    NewItemsListComponent,
   ],
   imports: [
     BrowserModule,
