@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
 const userRoutes = require("./routes/user");
+const auctionRoutes = require("./routes/auction");
 
 const app = express();
 
@@ -47,6 +48,8 @@ app.use((req, res, next) => {
 app.use("/", express.static(path.join(__dirname, "../dist/api-creation")));
 
 app.use("/api/user", userRoutes);
+app.use("/api/auction", auctionRoutes);
+
 app.use((req, res, next) => {
   res.sendFile(path.join(__dirname, "../dist/api-creation/index.html"));
 });

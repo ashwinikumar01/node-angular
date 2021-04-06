@@ -22,6 +22,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { ErrorComponent } from './error/error.component';
 import { ErrorInterceptor } from './error-interceptor';
 import { AuctionsListComponent } from './auctions-list/auctions-list.component';
+import { CreateNewItemComponent } from './auctions-list/create-new-item/create-new-item.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { AuctionsListComponent } from './auctions-list/auctions-list.component';
     SignupComponent,
     ErrorComponent,
     AuctionsListComponent,
+    CreateNewItemComponent,
   ],
   imports: [
     BrowserModule,

@@ -61,3 +61,13 @@ a {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
 }
+
+.mat-button-add {
+  background-color: rgb(4, 228, 4);
+  color: white;
+}
+
+.mat-button-add:hover {
+  background-color: lightgreen;
+  color: white;
+}

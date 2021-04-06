@@ -5,7 +5,7 @@ import { AuthService } from '../auth/auth.service';
 @Component({
   selector: 'auctions-list',
   templateUrl: './auctions-list.component.html',
-  styleUrls: ['./auctions-list.component.sass'],
+  styleUrls: ['./auctions-list.component.scss'],
 })
 export class AuctionsListComponent implements OnInit, OnDestroy {
   userIsAuthenticated = false;

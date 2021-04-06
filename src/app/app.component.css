@@ -4,3 +4,8 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+
+main {
+  width: 80%;
+  margin: 1rem auto;
+}
