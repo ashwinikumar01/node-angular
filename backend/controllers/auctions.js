@@ -9,7 +9,7 @@ exports.createAuctionItem = (req, res, next) => {
     auctionItemImagePath: url + "/images/" + req.file.filename,
   });
   auction
-    .save()
+    .save() // data saved in Mongo DB
     .then((createdAuctionList) => {
       res.status(200).json({
         message: "Auction Item added successfully!",
