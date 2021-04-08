@@ -14,10 +14,11 @@ exports.createAuctionItem = (req, res, next) => {
       res.status(200).json({
         message: "Auction Item added successfully!",
         auctionItemList: {
-          id: createdAuctionList._id,     // _id from MongoDb
           ...createdAuctionList,
+          id: createdAuctionList._id, // _id from MongoDb
         },
       });
+      console.log(createdAuctionList);
     })
     .catch((eror) => {
       res.status(500).json({
@@ -34,7 +35,7 @@ exports.updateAuctionItem = (req, res, next) => {
     auctionItemImagePath = url + "/images/" + req.file.filename;
   }
   const auction = new Auction({
-    _id: req.body.id,     //we are getting (_id) from mongoDB because we once posted it on db
+    _id: req.body.id, //we are getting (_id) from mongoDB because we once posted it on db
     auctionItemTitle: req.body.auctionItemTitle,
     auctionItemContent: req.body.auctionItemContent,
     auctionItemImagePath: req.body.auctionItemImagePath,
@@ -58,19 +59,19 @@ exports.getAllAuctionItems = (req, res, next) => {
 
 //Getting a Single Auction Item & req.params.id is given by express
 exports.getSingleAuctionItem = (req, res, next) => {
-  Auction.findById(req.params.id).then((singleAuctionItem) => {
-    if (singleAuctionItem) {
-      res.status(200).json(singleAuctionItem);
-    } else {
-      res.status(404).json({ message: "Auction Item Not Found!" });
-    }
-  }).catch(
-    (error) => {
+  Auction.findById(req.params.id)
+    .then((singleAuctionItem) => {
+      if (singleAuctionItem) {
+        res.status(200).json(singleAuctionItem);
+      } else {
+        res.status(404).json({ message: "Auction Item Not Found!" });
+      }
+    })
+    .catch((error) => {
       res.status(500).json({
         message: "Fetching Auction Item failed!",
       });
-    }
-  );
+    });
 };
 
 // Deleting a single auction item

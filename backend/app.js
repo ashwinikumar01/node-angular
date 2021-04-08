@@ -30,6 +30,7 @@ mongoose
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use("/images", express.static(path.join("backend/images")));
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -48,7 +49,6 @@ app.use("/", express.static(path.join(__dirname, "../dist/api-creation")));
 
 app.use("/api/user", userRoutes);
 app.use("/api/auctions", auctionRoutes);
-app.use("/images", express.static(path.join("backend/images")));
 
 app.use((req, res, next) => {
   res.sendFile(path.join(__dirname, "../dist/api-creation/index.html"));

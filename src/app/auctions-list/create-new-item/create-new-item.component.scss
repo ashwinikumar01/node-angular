@@ -1,0 +1,32 @@
+mat-form-field,
+textarea {
+    width: 100%;
+}
+
+mat-spinner {
+    margin: auto;
+}
+
+input[type="file"] {
+    visibility: hidden;
+}
+
+.image-preview {
+    height: 5rem;
+    margin: 1rem 0;
+}
+
+.image-preview img {
+    height: 100%;
+}
+
+.mat-button1:hover {
+    background-color: #06d471;
+    color: white;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+.margin-change {
+    margin-top: 15px;
+}
