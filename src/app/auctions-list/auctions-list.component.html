@@ -1,15 +1,27 @@
-<mat-accordion>
-  <mat-expansion-panel>
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-accordion multi="true" *ngIf="auctions.length > 0 && !isLoading">
+  <mat-expansion-panel *ngFor="let auction of auctions">
     <mat-expansion-panel-header>
-      Hello World
+      {{ auction.auctionItemTitle }}
     </mat-expansion-panel-header>
-    <div class="auction-image"></div>
-    <p>Bye bye</p>
+    <div class="auction-image">
+      <img [src]="auction.auctionItemImagePath" [alt]="" />
+    </div>
+    <p>{{ auction.auctionItemContent }}</p>
     <mat-action-row>
       <button mat-raised-button class="edit-button">Edit</button>
-      <button mat-raised-button color="warn" class="delete-button">
+      <button
+        mat-raised-button
+        color="warn"
+        class="delete-button"
+        (click)="onDelete(auction.id)"
+      >
         Delete
       </button>
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
+
+<p class="info-text mat-body-1" *ngIf="auctions.length <= 0 && !isLoading">
+  No Auction Item added yet
+</p>

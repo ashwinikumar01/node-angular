@@ -126,13 +126,14 @@ export class AuctionsService {
   }
 
   deleteAuctionItem(auctionItemId: string) {
-    return this.http.delete(BACKEND_URL + auctionItemId).subscribe(() => {
-      // we wanted to keep only this list
-      const updatedAuctionItemList = this.auctionsModelItems.filter(
-        (auctionModelItem) => auctionModelItem.id !== auctionItemId
-      );
-      this.auctionsModelItems = updatedAuctionItemList;
-      this.auctionsUpdated.next([...this.auctionsModelItems]);
-    });
+    return this.http.delete(BACKEND_URL + '/' + auctionItemId);
+    // .subscribe(() => {
+    //   // we wanted to keep only this list
+    //   const updatedAuctionItemList = this.auctionsModelItems.filter(
+    //     (auctionModelItem) => auctionModelItem.id !== auctionItemId
+    //   );
+    //   this.auctionsModelItems = updatedAuctionItemList;
+    //   this.auctionsUpdated.next([...this.auctionsModelItems]);
+    // });
   }
 }
