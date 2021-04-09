@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatChipsModule } from '@angular/material/chips';
 import { MatDialogModule } from '@angular/material/dialog';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
@@ -49,6 +50,7 @@ import { CreateNewItemComponent } from './auctions-list/create-new-item/create-n
     MatSelectModule,
     HttpClientModule,
     MatExpansionModule,
+    MatChipsModule,
     MatIconModule,
     MatDialogModule,
   ],

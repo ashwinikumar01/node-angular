@@ -35,6 +35,9 @@ export class CreateNewItemComponent implements OnInit {
         validators: [Validators.required],
         asyncValidators: [mimeType],
       }),
+      auctionItemPrice: new FormControl(null, {
+        validators: [Validators.required],
+      }),
     });
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('auctionId')) {
@@ -50,11 +53,13 @@ export class CreateNewItemComponent implements OnInit {
               auctionItemTitle: auctionData.auctionItemTitle,
               auctionItemContent: auctionData.auctionItemContent,
               auctionItemImagePath: auctionData.auctionItemImagePath,
+              auctionItemPrice: auctionData.auctionItemPrice,
             };
             this.form.setValue({
               auctionItemTitle: this.auction.auctionItemTitle,
               auctionItemContent: this.auction.auctionItemContent,
               image: this.auction.auctionItemImagePath,
+              auctionItemPrice: this.auction.auctionItemPrice,
             });
           });
       } else {
@@ -84,14 +89,16 @@ export class CreateNewItemComponent implements OnInit {
       this.auctionService.addAuctionItem(
         this.form.value.auctionItemTitle,
         this.form.value.auctionItemContent,
-        this.form.value.image
+        this.form.value.image,
+        this.form.value.auctionItemPrice
       );
     } else {
       this.auctionService.updateAuctionItem(
         this.auctionId,
         this.form.value.auctionItemTitle,
         this.form.value.auctionItemContent,
-        this.form.value.image
+        this.form.value.image,
+        this.form.value.auctionItemPrice
       );
     }
 

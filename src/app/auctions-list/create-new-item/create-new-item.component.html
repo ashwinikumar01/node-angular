@@ -40,6 +40,18 @@
         Please enter a auction item content!
       </mat-error>
     </mat-form-field>
+    <mat-form-field>
+      <mat-label>Enter Auction Item Price</mat-label>
+      <input
+        matInput
+        type="number"
+        [formControlName]="'auctionItemPrice'"
+        placeholder="Enter Auction Item Price"
+      />
+      <mat-error *ngIf="form.get('auctionItemPrice').invalid">
+        Please enter a auction item price!
+      </mat-error>
+    </mat-form-field>
     <button
       class="margin-change mat-button1"
       mat-raised-button

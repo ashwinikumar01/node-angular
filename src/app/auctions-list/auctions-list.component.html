@@ -2,14 +2,26 @@
 <mat-accordion multi="true" *ngIf="auctions.length > 0 && !isLoading">
   <mat-expansion-panel *ngFor="let auction of auctions">
     <mat-expansion-panel-header>
-      {{ auction.auctionItemTitle }}
+      <mat-panel-title>
+        <div class="chip text2">Item Name : {{ auction.auctionItemTitle }}</div>
+        <div class="chip margin-left text-size">
+          Price :
+          {{ auction.auctionItemPrice | currency: 'USD':true:'3.2-2' }}
+        </div>
+      </mat-panel-title>
     </mat-expansion-panel-header>
     <div class="auction-image">
       <img [src]="auction.auctionItemImagePath" [alt]="" />
     </div>
     <p>{{ auction.auctionItemContent }}</p>
     <mat-action-row>
-      <button mat-raised-button class="edit-button">Edit</button>
+      <button
+        mat-raised-button
+        class="edit-button"
+        [routerLink]="['/edit', auction.id]"
+      >
+        Edit
+      </button>
       <button
         mat-raised-button
         color="warn"

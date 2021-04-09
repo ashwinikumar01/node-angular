@@ -7,6 +7,7 @@ exports.createAuctionItem = (req, res, next) => {
     auctionItemTitle: req.body.auctionItemTitle,
     auctionItemContent: req.body.auctionItemContent,
     auctionItemImagePath: url + "/images/" + req.file.filename,
+    auctionItemPrice: req.body.auctionItemPrice,
   });
   auction
     .save() // data saved in Mongo DB
@@ -39,6 +40,7 @@ exports.updateAuctionItem = (req, res, next) => {
     auctionItemTitle: req.body.auctionItemTitle,
     auctionItemContent: req.body.auctionItemContent,
     auctionItemImagePath: req.body.auctionItemImagePath,
+    auctionItemPrice: req.body.auctionItemPrice,
   });
   console.log(auction);
   Auction.updateOne({ _id: req.params.id }, auction).then((result) => {

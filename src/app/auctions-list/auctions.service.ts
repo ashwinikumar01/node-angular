@@ -27,6 +27,7 @@ export class AuctionsService {
               auctionItemTitle: auction.auctionItemTitle,
               auctionItemContent: auction.auctionItemContent,
               auctionItemImagePath: auction.auctionItemImagePath,
+              auctionItemPrice: auction.auctionItemPrice,
             };
           });
         })
@@ -43,7 +44,8 @@ export class AuctionsService {
       auctionItemTitle: string;
       auctionItemContent: string;
       auctionItemImagePath: string;
-    }>(BACKEND_URL + auctionSingleItemId);
+      auctionItemPrice: number;
+    }>(BACKEND_URL + '/' + auctionSingleItemId);
   }
 
   getAuctionUpdateListener() {
@@ -53,7 +55,8 @@ export class AuctionsService {
   addAuctionItem(
     auctionItemTitle: string,
     auctionItemContent: string,
-    auctionItemImagePath: File
+    auctionItemImagePath: File,
+    auctionItemPrice: any
   ) {
     const auctionData = new FormData();
     auctionData.append('auctionItemTitle', auctionItemTitle);
@@ -63,6 +66,7 @@ export class AuctionsService {
       auctionItemImagePath,
       auctionItemTitle
     );
+    auctionData.append('auctionItemPrice', auctionItemPrice);
     this.http
       .post<{ message: string; auctionItemList: Auction }>(
         BACKEND_URL,
@@ -75,10 +79,12 @@ export class AuctionsService {
           auctionItemContent: auctionItemContent,
           auctionItemImagePath:
             responseData.auctionItemList.auctionItemImagePath,
+          auctionItemPrice: auctionItemPrice,
         };
         this.auctionsModelItems.push(auction);
         this.auctionsUpdated.next([...this.auctionsModelItems]);
         this.router.navigate(['/auctions-list']);
+        console.log(responseData);
       });
   }
 
@@ -86,7 +92,8 @@ export class AuctionsService {
     id: string,
     auctionItemTitle: string,
     auctionItemContent: string,
-    auctionItemImagePath: File | string
+    auctionItemImagePath: File | string,
+    auctionItemPrice: any
   ) {
     let auctionData: Auction | FormData;
     if (typeof auctionItemImagePath === 'object') {
@@ -99,29 +106,34 @@ export class AuctionsService {
         auctionItemImagePath,
         auctionItemTitle
       );
+      auctionData.append('auctionItemPrice', auctionItemPrice);
     } else {
       auctionData = {
         id: id,
         auctionItemTitle: auctionItemTitle,
         auctionItemContent: auctionItemContent,
         auctionItemImagePath: auctionItemImagePath,
+        auctionItemPrice: auctionItemPrice,
       };
-      this.http.put(BACKEND_URL + id, auctionData).subscribe((response) => {
-        const updatedAuctionList = [...this.auctionsModelItems];
-        const oldAuctionIndex = updatedAuctionList.findIndex(
-          (a) => a.id === id
-        );
-        const auction: Auction = {
-          id: id,
-          auctionItemTitle: auctionItemTitle,
-          auctionItemContent: auctionItemContent,
-          auctionItemImagePath: auctionItemImagePath,
-        };
-        updatedAuctionList[oldAuctionIndex] = auction;
-        this.auctionsModelItems = updatedAuctionList;
-        this.auctionsUpdated.next([...this.auctionsModelItems]);
-        this.router.navigate(['/auctions-list']);
-      });
+      this.http
+        .put(BACKEND_URL + '/' + id, auctionData)
+        .subscribe((response) => {
+          const updatedAuctionList = [...this.auctionsModelItems];
+          const oldAuctionIndex = updatedAuctionList.findIndex(
+            (a) => a.id === id
+          );
+          const auction: Auction = {
+            id: id,
+            auctionItemTitle: auctionItemTitle,
+            auctionItemContent: auctionItemContent,
+            auctionItemImagePath: auctionItemImagePath,
+            auctionItemPrice: auctionItemPrice,
+          };
+          updatedAuctionList[oldAuctionIndex] = auction;
+          this.auctionsModelItems = updatedAuctionList;
+          this.auctionsUpdated.next([...this.auctionsModelItems]);
+          this.router.navigate(['/auctions-list']);
+        });
     }
   }
 
