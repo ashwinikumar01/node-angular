@@ -36,7 +36,7 @@ export class CreateNewItemComponent implements OnInit {
         asyncValidators: [mimeType],
       }),
       auctionItemPrice: new FormControl(null, {
-        validators: [Validators.required],
+        validators: [Validators.required, Validators.min(0)],
       }),
     });
     this.route.paramMap.subscribe((paramMap: ParamMap) => {

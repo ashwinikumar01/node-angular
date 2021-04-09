@@ -48,8 +48,13 @@
         [formControlName]="'auctionItemPrice'"
         placeholder="Enter Auction Item Price"
       />
-      <mat-error *ngIf="form.get('auctionItemPrice').invalid">
-        Please enter a auction item price!
+      <mat-error
+        *ngIf="
+          form.get('auctionItemPrice').touched &&
+          form.get('auctionItemPrice').invalid
+        "
+      >
+        Please enter a valid auction item price!
       </mat-error>
     </mat-form-field>
     <button
