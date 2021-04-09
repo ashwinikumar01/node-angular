@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/auth/auth.service';
 import { Auction } from '../auction.model';
 import { AuctionsService } from '../auctions.service';
 import { mimeType } from './mime-type.validator';
@@ -10,20 +12,27 @@ import { mimeType } from './mime-type.validator';
   templateUrl: './create-new-item.component.html',
   styleUrls: ['./create-new-item.component.scss'],
 })
-export class CreateNewItemComponent implements OnInit {
+export class CreateNewItemComponent implements OnInit, OnDestroy {
   private mode = 'create';
   private auctionId: string;
   auction: Auction;
   isLoading = false;
   form: FormGroup;
   imagePreview: string;
+  private authStatusSub: Subscription;
 
   constructor(
     private auctionService: AuctionsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
+    this.authStatusSub = this.authService
+      .getAuthStatusListener()
+      .subscribe((authStatus) => {
+        this.isLoading = false;
+      });
     this.form = new FormGroup({
       auctionItemTitle: new FormControl(null, {
         validators: [Validators.required, Validators.minLength(3)],
@@ -103,5 +112,9 @@ export class CreateNewItemComponent implements OnInit {
     }
 
     this.form.reset();
+  }
+
+  ngOnDestroy() {
+    this.authStatusSub.unsubscribe();
   }
 }

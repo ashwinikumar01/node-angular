@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.post("", extractFile, AuctionController.createAuctionItem);
 
-router.put(":/id", extractFile, AuctionController.updateAuctionItem);
+router.put("/:id", extractFile, AuctionController.updateAuctionItem);
 
 router.get("", AuctionController.getAllAuctionItems);
 
