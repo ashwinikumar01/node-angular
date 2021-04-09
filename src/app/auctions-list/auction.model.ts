@@ -4,4 +4,5 @@ export interface Auction {
   auctionItemContent: string;
   auctionItemImagePath: string;
   auctionItemPrice: number;
+  creator: string;
 }

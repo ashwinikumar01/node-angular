@@ -7,14 +7,14 @@ const extractFile = require("../middleware/file");
 
 const router = express.Router();
 
-router.post("", extractFile, AuctionController.createAuctionItem);
+router.post("", checkAuth, extractFile, AuctionController.createAuctionItem);
 
-router.put("/:id", extractFile, AuctionController.updateAuctionItem);
+router.put("/:id", checkAuth, extractFile, AuctionController.updateAuctionItem);
 
 router.get("", AuctionController.getAllAuctionItems);
 
 router.get("/:id", AuctionController.getSingleAuctionItem);
 
-router.delete("/:id", AuctionController.deleteAuctionItem);
+router.delete("/:id", checkAuth, AuctionController.deleteAuctionItem);
 
 module.exports = router;

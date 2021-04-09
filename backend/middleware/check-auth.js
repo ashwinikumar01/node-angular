@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
     next();
   } catch (error) {
     res.status(401).json({
-      message: "You are not authenticated!",
+      message: "You are not an Authenticated User!",
     });
   }
 };

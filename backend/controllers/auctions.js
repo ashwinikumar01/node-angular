@@ -8,6 +8,7 @@ exports.createAuctionItem = (req, res, next) => {
     auctionItemContent: req.body.auctionItemContent,
     auctionItemImagePath: url + "/images/" + req.file.filename,
     auctionItemPrice: req.body.auctionItemPrice,
+    creator: req.userData.userId,
   });
   auction
     .save() // data saved in Mongo DB
@@ -41,6 +42,7 @@ exports.updateAuctionItem = (req, res, next) => {
     auctionItemContent: req.body.auctionItemContent,
     auctionItemImagePath: auctionItemImagePath,
     auctionItemPrice: req.body.auctionItemPrice,
+    creator: req.userData.userId,
   });
   console.log(auction);
   Auction.updateOne({ _id: req.params.id }, auction)
@@ -55,7 +57,7 @@ exports.updateAuctionItem = (req, res, next) => {
     })
     .catch((error) => {
       res.status(500).json({
-        message: "Couldn't update the auction item!",
+        message: "Couldn't update an auction item!",
       });
     });
 };
@@ -90,8 +92,19 @@ exports.getSingleAuctionItem = (req, res, next) => {
 // Deleting a single auction item
 // _id == name in MongoDB & req.params.id is given by express
 exports.deleteAuctionItem = (req, res, next) => {
-  Auction.deleteOne({ _id: req.params.id }).then((result) => {
-    console.log(result);
-    res.status(200).json({ message: "Auction Item deleted!" });
-  });
+  Auction.deleteOne({ _id: req.params.id, creator: req.userData.userId })
+    .then((result) => {
+      console.log(result);
+      if (result.n > 0) {
+        // we deleted the auction item
+        res.status(200).json({ message: "Auction Item Deleted!" });
+      } else {
+        res.status(401).json({ message: "Not Authorized!" });
+      }
+    })
+    .catch((eror) => {
+      res.status(500).json({
+        message: "Deleting an auction item failed!",
+      });
+    });
 };
