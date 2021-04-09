@@ -23,7 +23,7 @@ mat-spinner {
 
 .auction-image img {
   width: 100%;
-  height: 50%;
+  height: 30%;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
 
@@ -47,10 +47,10 @@ mat-spinner {
   align-items: center;
   display: inline-flex;
   justify-content: center;
-  background-color: rgb(245, 67, 36);
+  background-color: rgb(242, 252, 112);
   border-radius: 9999px;
   padding: 8px 18px;
-  color: rgb(255, 255, 255);
+  color: black;
 }
 
 .margin-left {
@@ -63,5 +63,4 @@ mat-spinner {
 
 .text-size {
   font-weight: bold;
-  font-style: italic;
 }
