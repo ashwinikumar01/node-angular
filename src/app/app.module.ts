@@ -24,6 +24,7 @@ import { ErrorComponent } from './error/error.component';
 import { ErrorInterceptor } from './error-interceptor';
 import { AuctionsListComponent } from './auctions-list/auctions-list.component';
 import { CreateNewItemComponent } from './auctions-list/create-new-item/create-new-item.component';
+import { AuthInterceptor } from './auth/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { CreateNewItemComponent } from './auctions-list/create-new-item/create-n
     MatDialogModule,
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],

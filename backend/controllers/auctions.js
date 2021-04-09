@@ -15,7 +15,7 @@ exports.createAuctionItem = (req, res, next) => {
       res.status(200).json({
         message: "Auction Item added successfully!",
         auctionItemList: {
-          ...createdAuctionList.toObject(),
+          ...createdAuctionList,
           id: createdAuctionList._id, // _id from MongoDb
         },
       });
@@ -39,14 +39,25 @@ exports.updateAuctionItem = (req, res, next) => {
     _id: req.body.id, //we are getting (_id) from mongoDB because we once posted it on db
     auctionItemTitle: req.body.auctionItemTitle,
     auctionItemContent: req.body.auctionItemContent,
-    auctionItemImagePath: req.body.auctionItemImagePath,
+    auctionItemImagePath: auctionItemImagePath,
     auctionItemPrice: req.body.auctionItemPrice,
   });
   console.log(auction);
-  Auction.updateOne({ _id: req.params.id }, auction).then((result) => {
-    console.log(result);
-    res.status(200).json({ message: "Auction Item Updated Successfully!" });
-  });
+  Auction.updateOne({ _id: req.params.id }, auction)
+    .then((result) => {
+      console.log(result);
+      if (result.n > 0) {
+        // we updated the auction item
+        res.status(200).json({ message: "Auction Item Updated Successfully!" });
+      } else {
+        res.status(401).json({ message: "Not Authorized!" });
+      }
+    })
+    .catch((error) => {
+      res.status(500).json({
+        message: "Couldn't update the auction item!",
+      });
+    });
 };
 
 //Getting all Auctions List
