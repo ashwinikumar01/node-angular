@@ -47,10 +47,21 @@ mat-spinner {
   align-items: center;
   display: inline-flex;
   justify-content: center;
-  background-color: rgb(242, 252, 112);
+  background-color: rgb(83, 252, 125);
   border-radius: 9999px;
   padding: 8px 18px;
   color: black;
+}
+
+.chip1 {
+  margin-top: 3px;
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  background-color: red;
+  border-radius: 9999px;
+  padding: 8px 18px;
+  color: white;
 }
 
 .margin-left {

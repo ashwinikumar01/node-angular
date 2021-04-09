@@ -63,6 +63,7 @@ export class CreateNewItemComponent implements OnInit, OnDestroy {
               auctionItemContent: auctionData.auctionItemContent,
               auctionItemImagePath: auctionData.auctionItemImagePath,
               auctionItemPrice: auctionData.auctionItemPrice,
+              creator: auctionData.creator,
             };
             this.form.setValue({
               auctionItemTitle: this.auction.auctionItemTitle,

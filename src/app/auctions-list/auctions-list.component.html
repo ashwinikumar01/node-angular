@@ -3,10 +3,18 @@
   <mat-expansion-panel *ngFor="let auction of auctions">
     <mat-expansion-panel-header>
       <mat-panel-title>
-        <div class="chip text2">Item Name : {{ auction.auctionItemTitle }}</div>
+        <div class="chip margin-left text-size">
+          {{ auction.auctionItemTitle }}
+        </div>
         <div class="chip margin-left text-size">
           Price :
           {{ auction.auctionItemPrice | currency: 'USD':true:'3.2-2' }}
+        </div>
+        <div
+          class="chip1 text2 margin-left"
+          *ngIf="userIsAuthenticated && userId === auction.creator"
+        >
+          Created User
         </div>
       </mat-panel-title>
     </mat-expansion-panel-header>
@@ -14,7 +22,7 @@
       <img [src]="auction.auctionItemImagePath" [alt]="" />
     </div>
     <p>{{ auction.auctionItemContent }}</p>
-    <mat-action-row>
+    <mat-action-row *ngIf="userIsAuthenticated && userId === auction.creator">
       <button
         mat-raised-button
         class="edit-button"
