@@ -129,6 +129,7 @@ export class AuctionsService {
       updatedAuctionList[oldAuctionIndex] = auction;
       this.auctionsModelItems = updatedAuctionList;
       this.auctionsUpdated.next([...this.auctionsModelItems]);
+      console.log(response);
       this.router.navigate(['/auctions-list']);
     });
   }

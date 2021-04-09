@@ -15,7 +15,7 @@ exports.createAuctionItem = (req, res, next) => {
       res.status(200).json({
         message: "Auction Item added successfully!",
         auctionItemList: {
-          ...createdAuctionList,
+          ...createdAuctionList.toObject(),
           id: createdAuctionList._id, // _id from MongoDb
         },
       });

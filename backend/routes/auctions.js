@@ -2,7 +2,7 @@ const express = require("express");
 
 const AuctionController = require("../controllers/auctions");
 
-// const checkAuth = require("../middleware/check-auth");
+const checkAuth = require("../middleware/check-auth");
 const extractFile = require("../middleware/file");
 
 const router = express.Router();
