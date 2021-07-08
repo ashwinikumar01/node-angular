@@ -1,9 +1,9 @@
 <mat-toolbar>
   <a class="heading" *ngIf="!userIsAuthenticated" routerLink="/login">
-    Online Auction
+   {{envName}}
   </a>
   <a class="heading" *ngIf="userIsAuthenticated" routerLink="/auctions-list">
-    Online Auction
+   {{envName}}
   </a>
   <span class="spacer"></span>
   <ul>

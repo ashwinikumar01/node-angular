@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  name: "development",
   apiUrl: 'https://online-web-auction.herokuapp.com/api',
 };
 
