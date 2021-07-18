@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { AuthService } from '../auth/auth.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { AuthService } from '../auth/auth.service';
 export class NavbarComponent implements OnInit, OnDestroy {
   userIsAuthenticated = false;
   private authStatusSubs: Subscription;
+  envName = environment.name;
 
   constructor(private authService: AuthService) {}
 
