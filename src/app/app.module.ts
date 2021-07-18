@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-
+import { NgxStripeModule } from 'ngx-stripe';
 import { AppRoutingModule } from './app-routing.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -53,6 +53,9 @@ import { AuthInterceptor } from './auth/auth-interceptor';
     MatExpansionModule,
     MatChipsModule,
     MatIconModule,
+    NgxStripeModule.forRoot(
+      'pk_test_51JEGpWSAj2YyY8jGQ9NDELNASLDy9ORvfvYB9oE3yTo7OBsvLcNxcRuiJcOoG3hYOjihyynefrnvLqfA7Rbub9ZU00nICcWfeM'
+    ),
     MatDialogModule,
   ],
   providers: [

@@ -1,6 +1,13 @@
 <div class="center">
   <mat-card class="card-color">
-    <mat-card-header>
+
+    <ngx-stripe-payment-request-button
+    [paymentOptions]="paymentRequestOptions"
+    (paymentMethod)="onPaymentMethod($event)"
+    (shippingaddresschange)="onShippingAddressChange($event)"
+    (notavailable)="onNotAvailable()"
+  ></ngx-stripe-payment-request-button>
+    <!-- <mat-card-header>
       <mat-card-title *ngIf="!isLoading">Login</mat-card-title>
       <mat-card-title *ngIf="isLoading">
         Logging in, please wait...
@@ -54,6 +61,6 @@
       >
         Login
       </button>
-    </form>
+    </form> -->
   </mat-card>
 </div>
